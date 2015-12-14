@@ -18,6 +18,7 @@
 	
 	<!-- stylesheets -->
 	<link href="<?php echo get_template_directory(); ?>/css/normalize.css" rel="stylesheet">
+	<link href="<?php echo get_template_directory(); ?>/css/editor-style.css" rel="stylesheet">
 	<link href="<?php bloginfo('stylesheet_url'); ?>" rel="stylesheet">
 
 	<!-- favicon -->
