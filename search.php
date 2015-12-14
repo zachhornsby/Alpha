@@ -4,7 +4,7 @@
 
 		<h2>Search Results</h2>
 
-		<?php include (TEMPLATEPATH . '/inc/nav.php' ); ?>
+		<?php get_template_part( 'inc/nav'); ?>
 
 		<?php while (have_posts()) : the_post(); ?>
 
@@ -12,7 +12,7 @@
 
 				<h2><?php the_title(); ?></h2>
 
-				<?php include (TEMPLATEPATH . '/inc/meta.php' ); ?>
+				<?php get_template_part( 'inc/meta'); ?>
 
 				<div class="entry">
 
@@ -24,7 +24,7 @@
 
 		<?php endwhile; ?>
 
-		<?php include (TEMPLATEPATH . '/inc/nav.php' ); ?>
+		<?php get_template_part( 'inc/nav'); ?>
 
 	<?php else : ?>
 
