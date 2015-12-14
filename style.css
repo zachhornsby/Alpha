@@ -9,8 +9,6 @@ License: GNU General Public License v2.0
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 */
 
-@media screen {
-
 * { margin: 0; padding: 0; }
 body { background: white; font: 14px/1.4 Georgia, Serif; }
 .screen-reader-text { position: absolute; left: -9999px; top: -9999px; }
@@ -55,6 +53,19 @@ code, tt { }
 #searchform { }
 	#s { }
 	#searchsubmt { }
+
+.alignleft {  float: left; margin:0 15px 30px 0; }
+.aligncenter { display: block; margin: 0 auto 30px auto; }
+.alignright { float: right; margin:0 0 30px 15px; }
+.alignnone { float: none; display:block; margin:0 0 30px 0; }
+
+.size-full { width:100%; height:auto; margin:0 0 30px 0; }
+
+p .alignleft { float: left; margin:5px 15px 30px 0; }
+p .aligncenter { display: block; margin: 5px auto 30px auto; }
+p .alignright { float: right; margin:5px 0 30px 15px; }
+p .alignnone { float: none; display:block; margin:5px 0 30px 0; }
+p .size-full { width:100%; height:auto; margin:5px 0 30px 0; }
 	
 ol.commentlist { list-style: none; }
 ol.commentlist li { }
@@ -100,33 +111,3 @@ ol.commentlist li.thread-odd { }
 form { }
 input[type=text] { }
 textarea { }
-
-
-} /* END screen media */
-
-
-@media print {
-
-.do-not-print { display: none; }
-#comments { page-break-before: always; }
-
-body { width: 100% !important; margin: 0 !important; padding: 0 !important; line-height: 1.4; word-spacing: 1.1pt; letter-spacing: 0.2pt; font-family: Garamond,"Times New Roman", serif; color: #000; background: none; font-size: 12pt; }
-h1,h2,h3,h4,h5,h6 { font-family: Helvetica, Arial, sans-serif; }
-h1 { font-size: 19pt; }
-h2 { font-size:17pt; }
-h3 { font-size:15pt; }
-h4,h5,h6 { font-size:12pt; }
-code { font: 10pt Courier, monospace; } 
-blockquote { margin: 1.3em; padding: 1em; }
-img { display: block; margin: 1em 0; }
-a img { border: none; }
-table { margin: 1px; text-align:left; }
-th { border-bottom: 1px solid #333;  font-weight: bold; }
-td { border-bottom: 1px solid #333; }
-th, td { padding: 4px 10px 4px 0; }
-caption { background: #fff; margin-bottom: 2em; text-align: left; }
-thead { display: table-header-group; }
-tr { page-break-inside: avoid; } 
-a { text-decoration: none; color: black; }
-	
-} /* END print media */
