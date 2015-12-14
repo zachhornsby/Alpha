@@ -17,15 +17,15 @@
 	<link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>">
 	
 	<!-- stylesheets -->
-	<link href="<?php echo get_template_directory(); ?>/css/normalize.css" rel="stylesheet">
-	<link href="<?php echo get_template_directory(); ?>/css/editor-style.css" rel="stylesheet">
+	<link href="<?php echo get_stylesheet_directory_uri(); ?>/css/normalize.css" rel="stylesheet">
+	<link href="<?php echo get_stylesheet_directory_uri(); ?>/css/editor-style.css" rel="stylesheet">
 	<link href="<?php bloginfo('stylesheet_url'); ?>" rel="stylesheet">
 
 	<!-- favicon -->
-	<link href="<?php echo get_template_directory(); ?>/favicon.ico" rel="icon" type="image/x-icon">
+	<link href="<?php echo get_stylesheet_directory_uri(); ?>/favicon.ico" rel="icon" type="image/x-icon">
 	
 	<!--[if lt IE 9]>
-	<script src="<?php echo get_template_directory(); ?>/js/html5.js"></script>
+	<script src="<?php echo get_stylesheet_directory_uri(); ?>/js/html5.js"></script>
 	<![endif]-->
 	
 	<?php wp_head(); ?>
