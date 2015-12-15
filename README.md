@@ -3,7 +3,7 @@
 Alpha
 ==========
 
-Alpha is a starter theme for WordPress v4.4.
+Alpha is a starter theme for WordPress v4.0+.
 
 This is an older theme that I'm working to make anew. I wouldn't recommend you use it yet.
 
