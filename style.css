@@ -75,7 +75,11 @@ input:focus {
 
 .header { }
 .logo { }
-.logo-img { }
+
+.logo-img {
+	max-width:100px;
+}
+
 .nav { }
 .sidebar { }
 .footer { }

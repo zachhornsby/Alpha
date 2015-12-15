@@ -243,7 +243,6 @@ function alphacomments($comment, $args, $depth)
 <?php }
 
 // Page title format
-
 function alpha_title( $title, $sep ) {
 	global $paged, $page;
 	if ( is_feed() ) {
