@@ -1,4 +1,6 @@
 ![Alpha Theme](https://github.com/zachhornsby/Alpha/blob/master/screenshot.png)
+
+Alpha
 ==========
 
 Alpha is a starter theme for WordPress v4.4.
