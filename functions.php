@@ -125,7 +125,7 @@ function remove_category_rel_from_category_list($thelist) {
 	return str_replace('rel="category tag"', 'rel="tag"', $thelist);
 }
 
-// Add page slug to body class, love this - Credit: Starkers Wordpress Theme
+// Add page slug to body class
 function add_slug_to_body_class($classes) {
 	global $post;
 	if (is_home()) {
@@ -152,7 +152,7 @@ function my_remove_recent_comments_style() {
 	));
 }
 
-// Pagination for paged posts, Page 1, Page 2, Page 3, with Next and Previous Links, No plugin
+// Pagination for paged posts, Page 1, Page 2, Page 3, with Next and Previous Links
 function alpha_pagination()
 {
 	global $wp_query;
@@ -163,6 +163,27 @@ function alpha_pagination()
 			'current' => max(1, get_query_var('paged')),
 			'total' => $wp_query->max_num_pages
 	));
+}
+
+// Custom Excerpts Length
+function alpha_index($length) {
+    return 20;
+}
+
+// Create the Custom Excerpts callback
+function alpha_excerpt($length_callback = '', $more_callback = '') {
+    global $post;
+    if (function_exists($length_callback)) {
+        add_filter('excerpt_length', $length_callback);
+    }
+    if (function_exists($more_callback)) {
+        add_filter('excerpt_more', $more_callback);
+    }
+    $output = get_the_excerpt();
+    $output = apply_filters('wptexturize', $output);
+    $output = apply_filters('convert_chars', $output);
+    $output = '<p>' . $output . '</p>';
+    echo $output;
 }
 
 //////////////////////////
