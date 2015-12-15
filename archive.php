@@ -1,37 +1,18 @@
 <?php get_header(); ?>
 
-		<?php if (have_posts()) : ?>
+	<main role="main">
 
-			<?php
-				the_archive_title( '<h2 class="page-title">', '</h2>' );
-				the_archive_description( '<div class="taxonomy-description">', '</div>' );
-			?>
+		<section>
 
-			<?php get_template_part( 'inc/nav'); ?>
+			<h1><?php _e( 'Archives', 'alpha' ); ?></h1>
 
-			<?php while (have_posts()) : the_post(); ?>
-			
-				<div <?php post_class() ?>>
-				
-						<h2 id="post-<?php the_ID(); ?>"><a href="<?php the_permalink() ?>"><?php the_title(); ?></a></h2>
-					
-						<?php get_template_part( 'inc/meta'); ?>
+			<?php get_template_part('loop'); ?>
 
-						<div class="entry">
-							<?php the_content(); ?>
-						</div>
+			<?php get_template_part('pagination'); ?>
 
-				</div>
+		</section>
 
-			<?php endwhile; ?>
-
-			<?php get_template_part( 'inc/nav'); ?>
-			
-	<?php else : ?>
-
-		<h2>Nothing found</h2>
-
-	<?php endif; ?>
+	</main>
 
 <?php get_sidebar(); ?>
 
