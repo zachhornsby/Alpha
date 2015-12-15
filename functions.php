@@ -51,7 +51,7 @@ function alpha_enqueue_scripts() {
 	wp_register_script('jquery', ("https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"), false, '1.11.3');
 	wp_enqueue_script('jquery');
 }
-add_action('wp_enqueue_scripts', 'mytheme_enqueue_scripts');
+add_action('wp_enqueue_scripts', 'alpha_enqueue_scripts');
 
 //////////////////////////
 //  Navigation & Sidebar
@@ -92,11 +92,11 @@ function register_alpha_menu() {
 // If Dynamic Sidebar Exists
 if (function_exists('register_sidebar')) {
 	
-	// Define Sidebar Widget Area 1
+	// Define Sidebar 1
 	register_sidebar(array(
-		'name' => __('Widget Area 1', 'alpha'),
-		'description' => __('Description for this widget-area...', 'alpha'),
-		'id' => 'widget-area-1',
+		'name' => __('Sidebar 1', 'alpha'),
+		'description' => __('Description for this sidebar...', 'alpha'),
+		'id' => 'sidebar-1',
 		'before_widget' => '<div id="%1$s" class="%2$s">',
 		'after_widget' => '</div>',
 		'before_title' => '<h3>',
