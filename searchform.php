@@ -1,8 +1,4 @@
-<form action="<?php bloginfo('siteurl'); ?>" id="searchform" method="get">
-    <div>
-        <label for="s" class="screen-reader-text">Search for:</label>
-        <input type="text" id="s" name="s" value="" />
-        
-        <input type="submit" value="Search" id="searchsubmit" />
-    </div>
+<form class="search" method="get" action="<?php echo home_url(); ?>" role="search">
+	<input class="search-input" type="search" name="s" placeholder="To search, type and hit enter.">
+	<button class="search-submit" type="submit" role="button">Search</button>
 </form>
