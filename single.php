@@ -21,6 +21,8 @@
 					<span class="comments"><?php if (comments_open( get_the_ID() ) ) comments_popup_link( __( 'Leave your thoughts', 'alpha' ), __( '1 Comment', 'alpha' ), __( '% Comments', 'alpha' )); ?></span>
 
 					<?php the_content();?>
+					
+					<?php wp_link_pages(); ?>
 
 					<?php the_tags(); ?>
 
