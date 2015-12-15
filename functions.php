@@ -152,19 +152,6 @@ function my_remove_recent_comments_style() {
 	));
 }
 
-// Pagination for paged posts, Page 1, Page 2, Page 3, with Next and Previous Links
-function alpha_pagination()
-{
-	global $wp_query;
-		$big = 999999999;
-		echo paginate_links(array(
-			'base' => str_replace($big, '%#%', get_pagenum_link($big)),
-			'format' => '?paged=%#%',
-			'current' => max(1, get_query_var('paged')),
-			'total' => $wp_query->max_num_pages
-	));
-}
-
 // Custom Excerpts Length
 function alpha_index($length) {
     return 20;
@@ -271,7 +258,6 @@ add_action('init', 'alpha_header_scripts'); // Add Custom Scripts to wp_head
 add_action('wp_enqueue_scripts', 'alpha_styles'); // Add Theme Stylesheet
 add_action('init', 'register_alpha_menu'); // Add Menus
 add_action('widgets_init', 'my_remove_recent_comments_style'); // Remove inline Recent Comment Styles from wp_head()
-add_action('init', 'alpha_pagination'); // Add Pagination
 
 // Remove Actions
 remove_action('wp_head', 'feed_links_extra', 3); // Display the links to the extra feeds such as category feeds
