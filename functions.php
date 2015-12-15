@@ -10,26 +10,21 @@
 			 wp_enqueue_script('jquery');
 	}
 	add_action('wp_enqueue_scripts', 'mytheme_enqueue_scripts');
-	
-	// Clean up the <head>
-	function removeHeadLinks() {
-    	remove_action('wp_head', 'rsd_link');
-    	remove_action('wp_head', 'wlwmanifest_link');
-    }
-    add_action('init', 'removeHeadLinks');
-    remove_action('wp_head', 'wp_generator');
-    
-    if (function_exists('register_sidebar')) {
-    	register_sidebar(array(
-    		'name' => 'Sidebar Widgets',
-    		'id'   => 'sidebar-widgets',
-    		'description'   => 'These are widgets for the sidebar.',
-    		'before_widget' => '<div id="%1$s" class="widget %2$s">',
-    		'after_widget'  => '</div>',
-    		'before_title'  => '<h2>',
-    		'after_title'   => '</h2>'
-    	));
-    }
+
+	// Sidebar Support
+	function alpha_widgets_init() {
+		register_sidebar( array(
+			'name'          => __( 'Sidebar', 'alpha' ),
+			'id'            => 'sidebar',
+			'description'   => __( 'Add widgets here to appear in your sidebar.', 'alpha' ),
+			'before_widget' => '<section id="%1$s" class="widget %2$s">',
+			'after_widget'  => '</section>',
+			'before_title'  => '<h2 class="widget-title">',
+			'after_title'   => '</h2>',
+		) );
+	}
+	add_action( 'widgets_init', 'alpha_widgets_init' );
+
 
 	// Set content width
 	if ( ! isset( $content_width ) ) {
