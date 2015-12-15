@@ -12,6 +12,8 @@
 		<?php wp_list_comments('type=comment&callback=alphacomments'); // Custom callback in functions.php ?>
 	</ul>
 
+	<?php paginate_comments_links(); ?> 
+
 <?php elseif ( ! comments_open() && ! is_page() && post_type_supports( get_post_type(), 'comments' ) ) : ?>
 
 	<p>Comments are closed here.</p>
