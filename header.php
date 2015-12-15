@@ -1,37 +1,32 @@
 <!doctype html>
 
-<!--[if IE 7]> <html class="ie ie7" <?php language_attributes(); ?>> <![endif]-->
-<!--[if IE 8]> <html class="ie ie8" <?php language_attributes(); ?>> <![endif]-->
-<!--[if !(IE 7) & !(IE 8)]><!--> <html <?php language_attributes(); ?>> <!--<![endif]-->
-<head>
+<head <?php language_attributes(); ?> class="no-js">
 	
-	<meta charset="<?php bloginfo( 'charset' ); ?>">
-	<meta name="viewport" content="width=device-width,initial-scale=1">
+	<meta charset="<?php bloginfo('charset'); ?>">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="<?php bloginfo('description'); ?>">
 	
-	<?php if (is_search()) { ?>
-		<meta name="robots" content="noindex, nofollow"> 
-	<?php } ?>
-	
-	<title><?php wp_title( '&mdash;', true, 'right' ); ?></title>
+	<title><?php wp_title(''); ?><?php if(wp_title('', false)) { echo ' :'; } ?> <?php bloginfo('name'); ?></title>
 
-	<link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>">
-	
-	<!-- stylesheets -->
-	<link href="<?php echo get_stylesheet_directory_uri(); ?>/css/normalize.css" rel="stylesheet">
-	<link href="<?php echo get_stylesheet_directory_uri(); ?>/css/editor-style.css" rel="stylesheet">
-	<link href="<?php bloginfo('stylesheet_url'); ?>" rel="stylesheet">
+	<link href="<?php echo get_template_directory_uri(); ?>/img/icons/favicon.ico" rel="shortcut icon">
+	<link href="<?php echo get_template_directory_uri(); ?>/img/icons/touch.png" rel="apple-touch-icon-precomposed">
 
-	<!-- favicon -->
-	<link href="<?php echo get_stylesheet_directory_uri(); ?>/favicon.ico" rel="icon" type="image/x-icon">
-	
-	<!--[if lt IE 9]>
-	<script src="<?php echo get_stylesheet_directory_uri(); ?>/js/html5.js"></script>
-	<![endif]-->
-	
 	<?php wp_head(); ?>
-	
-</head>
 
-<body <?php body_class(); ?>>
+</head>
 	
-<h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
+<body <?php body_class(); ?>>
+
+<div class="wrapper">
+
+	<header class="header clear" role="banner">
+
+		<div class="logo">
+			<a href="<?php echo home_url(); ?>">
+				<img src="<?php echo get_template_directory_uri(); ?>/img/logo.svg" alt="Logo" class="logo-img">
+			</a>
+		</div>
+
+		<nav class="nav" role="navigation"></nav>
+
+	</header>
