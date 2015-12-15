@@ -1,36 +1,18 @@
 <?php get_header(); ?>
 
-	<?php if (have_posts()) : ?>
+	<main role="main">
+		
+		<section>
 
-		<h2>Search Results</h2>
+			<h1><?php echo "Search Results for", $wp_query->found_posts ); echo get_search_query(); ?></h1>
 
-		<?php get_template_part( 'inc/nav'); ?>
+			<?php get_template_part('loop'); ?>
 
-		<?php while (have_posts()) : the_post(); ?>
+			<?php get_template_part('pagination'); ?>
 
-			<div <?php post_class() ?> id="post-<?php the_ID(); ?>">
-
-				<h2><?php the_title(); ?></h2>
-
-				<?php get_template_part( 'inc/meta'); ?>
-
-				<div class="entry">
-
-					<?php the_excerpt(); ?>
-
-				</div>
-
-			</div>
-
-		<?php endwhile; ?>
-
-		<?php get_template_part( 'inc/nav'); ?>
-
-	<?php else : ?>
-
-		<h2>No posts found.</h2>
-
-	<?php endif; ?>
+		</section>
+		
+	</main>
 
 <?php get_sidebar(); ?>
 
