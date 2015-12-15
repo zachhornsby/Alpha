@@ -242,6 +242,27 @@ function alphacomments($comment, $args, $depth)
 	<?php endif; ?>
 <?php }
 
+// Page title format
+
+function alpha_title( $title, $sep ) {
+	global $paged, $page;
+	if ( is_feed() ) {
+		return $title;
+	} // end if
+	// Add the site name.
+	$title .= get_bloginfo( 'name' );
+	// Add the site description for the home/front page.
+	$site_description = get_bloginfo( 'description', 'display' );
+	if ( $site_description && ( is_home() || is_front_page() ) ) {
+		$title = "$title $sep $site_description";
+	} // end if
+	// Add a page number if necessary.
+	if ( $paged >= 2 || $page >= 2 ) {
+		$title = sprintf( __( 'Page %s', 'alpha' ), max( $paged, $page ) ) . " $sep $title";
+	} // end if
+	return $title;
+}
+
 //////////////////////////
 //  Actions
 //////////////////////////
@@ -270,5 +291,6 @@ remove_action('wp_head', 'wp_shortlink_wp_head', 10, 0);
 // Add Filters
 add_filter('body_class', 'add_slug_to_body_class'); // Add slug to body class
 add_filter('show_admin_bar', 'remove_admin_bar'); // Remove Admin bar
+add_filter( 'wp_title', 'alpha_title', 10, 2 ); // Page titles
 
 ?>
