@@ -1,5 +1,9 @@
 <?php /* Template Name: Homepage */ get_header(); ?>
 
-<!-- Homepage Content Here -->
+	<main role="main">
+		
+		<!-- Homepage Content Here -->
+		
+	</main>
 
 <?php get_footer(); ?>
