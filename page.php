@@ -1,28 +1,40 @@
 <?php get_header(); ?>
 
-	<?php if (have_posts()) : while (have_posts()) : the_post(); ?>
-			
-		<div class="post" id="post-<?php the_ID(); ?>">
+	<main role="main">
 
-			<h2><?php the_title(); ?></h2>
+		<section>
 
-			<?php get_template_part( 'inc/meta'); ?>
+			<h1><?php the_title(); ?></h1>
 
-			<div class="entry">
+			<?php if (have_posts()): while (have_posts()) : the_post(); ?>
 
-				<?php the_content(); ?>
+				<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 
-				<?php wp_link_pages(array('before' => 'Pages: ', 'next_or_number' => 'number')); ?>
+					<?php the_content(); ?>
 
-			</div>
+					<?php comments_template( '', true ); ?>
 
-			<?php edit_post_link('Edit this entry.', '<p>', '</p>'); ?>
+					<br class="clear">
 
-		</div>
-		
-		<?php comments_template(); ?>
+					<?php edit_post_link(); ?>
 
-		<?php endwhile; endif; ?>
+				</article>
+
+			<?php endwhile; ?>
+
+			<?php else: ?>
+
+				<article>
+
+					<h2>Sorry, nothing to display.</h2>
+
+				</article>
+
+			<?php endif; ?>
+
+		</section>
+
+	</main>
 
 <?php get_sidebar(); ?>
 
