@@ -186,9 +186,13 @@ function alpha_excerpt($length_callback = '', $more_callback = '') {
     echo $output;
 }
 
+// Remove Admin bar
+function remove_admin_bar() {
+    return false;
+}
+
 // Threaded Comments
-function enable_threaded_comments()
-{
+function enable_threaded_comments() {
     if (!is_admin()) {
         if (is_singular() AND comments_open() AND (get_option('thread_comments') == 1)) {
             wp_enqueue_script('comment-reply');
@@ -216,18 +220,16 @@ function alphacomments($comment, $args, $depth)
 	<div id="div-comment-<?php comment_ID() ?>" class="comment-body">
 	<?php endif; ?>
 	<div class="comment-author vcard">
-	<?php if ($args['avatar_size'] != 0) echo get_avatar( $comment, $args['180'] ); ?>
-	<?php printf(__('<cite class="fn">%s</cite> <span class="says">says:</span>'), get_comment_author_link()) ?>
+	<?php if ($args['avatar_size'] != 0) echo get_avatar( $comment, $args['avatar_size'] ); ?>
+	<?php printf(('<cite class="fn">%s</cite> <span class="says">says:</span>'), get_comment_author_link()) ?>
 	</div>
 <?php if ($comment->comment_approved == '0') : ?>
-	<em class="comment-awaiting-moderation"><?php _e('Your comment is awaiting moderation.') ?></em>
+	<em class="comment-awaiting-moderation">Your comment is awaiting moderation.</em>
 	<br />
 <?php endif; ?>
 
 	<div class="comment-meta commentmetadata"><a href="<?php echo htmlspecialchars( get_comment_link( $comment->comment_ID ) ) ?>">
-		<?php
-			printf( __('%1$s at %2$s'), get_comment_date(),  get_comment_time()) ?></a><?php edit_comment_link(__('(Edit)'),'  ','' );
-		?>
+		<?php printf(('%1$s at %2$s'), get_comment_date(),  get_comment_time()) ?></a><?php edit_comment_link(); ?>
 	</div>
 
 	<?php comment_text() ?>
@@ -247,8 +249,26 @@ function alphacomments($comment, $args, $depth)
 // Add Actions
 add_action('init', 'alpha_header_scripts'); // Add Custom Scripts to wp_head
 add_action('wp_enqueue_scripts', 'alpha_styles'); // Add Theme Stylesheet
-add_action('init', 'register_alpha_menu'); // Add HTML5 Blank Menu
+add_action('init', 'register_alpha_menu'); // Add Menus
 add_action('widgets_init', 'my_remove_recent_comments_style'); // Remove inline Recent Comment Styles from wp_head()
-add_action('init', 'alpha_pagination'); // Add our HTML5 Pagination
+add_action('init', 'alpha_pagination'); // Add Pagination
+
+// Remove Actions
+remove_action('wp_head', 'feed_links_extra', 3); // Display the links to the extra feeds such as category feeds
+remove_action('wp_head', 'feed_links', 2); // Display the links to the general feeds: Post and Comment Feed
+remove_action('wp_head', 'rsd_link'); // Display the link to the Really Simple Discovery service endpoint, EditURI link
+remove_action('wp_head', 'wlwmanifest_link'); // Display the link to the Windows Live Writer manifest file.
+remove_action('wp_head', 'index_rel_link'); // Index link
+remove_action('wp_head', 'parent_post_rel_link', 10, 0); // Prev link
+remove_action('wp_head', 'start_post_rel_link', 10, 0); // Start link
+remove_action('wp_head', 'adjacent_posts_rel_link', 10, 0); // Display relational links for the posts adjacent to the current post.
+remove_action('wp_head', 'wp_generator'); // Display the XHTML generator that is generated on the wp_head hook, WP version
+remove_action('wp_head', 'adjacent_posts_rel_link_wp_head', 10, 0);
+remove_action('wp_head', 'rel_canonical');
+remove_action('wp_head', 'wp_shortlink_wp_head', 10, 0);
+
+// Add Filters
+add_filter('body_class', 'add_slug_to_body_class'); // Add slug to body class
+add_filter('show_admin_bar', 'remove_admin_bar'); // Remove Admin bar
 
 ?>
