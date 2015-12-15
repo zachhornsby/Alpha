@@ -27,6 +27,8 @@
 			</a>
 		</div>
 
-		<nav class="nav" role="navigation"></nav>
+		<nav class="nav" role="navigation">
+			<?php alpha_nav(); ?>
+		</nav>
 
 	</header>
